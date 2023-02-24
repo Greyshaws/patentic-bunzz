@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import ReactDOM from 'react-dom';
 import { useParams, useNavigate } from "react-router-dom";
 import PatentsContext from "../context/patents-context";
 import Button from "../components/UI/Button";
+
+import Loading from "../components/UI/Loading";
 import classes from "./PatentView.module.css";
 import ContractContext from "../context/contract-context";
 import Header from "../components/Layout/Header";
+import NotConnected from "../components/Errors/NotConnected"
 import { useEffect } from "react";
 import { useState } from "react";
 import { formatAddress } from "../utils/contractUtils";
@@ -38,17 +40,35 @@ const PatentView = () => {
 
   if (!connected) {
     console.log("not connected");
-    return <div>Error</div>;
+    return <>
+    <Header />
+    <Box sx={{
+      mt: "5rem"
+    }}>
+      <NotConnected />
+      </Box></>;
   }
 
   if (patents.length === 0 && !loadingPatent) {
     console.log("0 patents");
-    return <div>No Patents</div>;
+    return <><Header />
+    <Box sx={{
+      mt: "5rem"
+      
+    }}>
+      No Patents
+      </Box></>;
   }
 
   if (loadingPatent) {
     console.log("loding patent");
-    return <div>Loading</div>;
+    return <><Header />
+    <Box sx={{
+      mt: "5rem"
+      
+    }}>
+      <Loading />
+      </Box></>;
   }
 
   console.log("loaded patents");
@@ -83,11 +103,25 @@ function createMarkup() {
   return (
     <>
       <Header />
-      <section className={classes["patent-view"]}>
+      <Box component="section" className={classes["patent-view"]} sx={{
+        mt: "5rem"
+      }}>
 
-        <div className={classes.main}>
+        <Box className={classes.main} sx={{
+          border: 0,
+          bgcolor: "secondary2.fade2"
+        }}>
           <Box sx={{
-            mb: 4
+            borderRadius: "8px",
+            mb: 4,
+            display: "inline-block",
+            bgcolor: "background.paper",
+            p: 1,
+            "&:hover": {
+              textDecoration: "none",
+              color: "primary.dark",
+              bgcolor: "primary.fade2",
+            }
           }} className={classes["back"]} onClick={backHandler}>
             back
           </Box>
@@ -112,7 +146,7 @@ function createMarkup() {
           </Box>
           
           
-        </div>
+        </Box>
         <Paper elevation={4} sx={{
           p: 2,
           bgcolor: "background.paperAlt",
@@ -122,6 +156,7 @@ function createMarkup() {
         height: "auto",
         marginLeft: {xs: "auto", md: "1rem"},
         minHeight: {xs: "auto", md: "calc(100vh - 4rem - 3.5rem)"},
+        color: "primary.contrastText"
         }} className={classes.side}>
           <div className={classes["type"]}>
           <h4>Type:</h4>
@@ -143,6 +178,9 @@ function createMarkup() {
             type={"link"}
             link={`/patents/message-owner/${patentOwner}/${timestamp}`}
             className={classes["msg-btn"]}
+            sxObj={{
+              mr: {xs: "1rem"}
+            }}
           >
             Reach Owner
           </Button>
@@ -150,7 +188,7 @@ function createMarkup() {
 
           </div>
         </Paper>
-      </section>
+      </Box>
     </>
   );
 };

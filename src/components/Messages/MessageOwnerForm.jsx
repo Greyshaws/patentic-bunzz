@@ -5,6 +5,7 @@ import useInput from "../../hooks/use-input";
 import { formatAddress } from "../../utils/contractUtils";
 import Button from "../UI/Button";
 import classes from "./MessageOwnerForm.module.css";
+import Box from "@mui/material/Box"
 
 const MessageOwnerForm = ({ to, patent }) => {
   const messagesCtx = useContext(MessagesContext);
@@ -43,8 +44,15 @@ const MessageOwnerForm = ({ to, patent }) => {
   };
 
   return (
-    <form className={classes["message-owner-form"]} onSubmit={submitHandler}>
-      <div className={classes.text}>
+    <Box component="form" className={classes["message-owner-form"]} onSubmit={submitHandler} sx={{
+      display: {xs: "block", md: "flex"},
+      flexDirection: {xs: "column", md: "row"},
+    }}>
+      <Box sx={{
+        border: 0,
+        bgcolor: "secondary2.fade2",
+        mb: {xs: 2, md: 0},
+      }} className={classes.text}>
         <label htmlFor="message-text">Message</label>
         <textarea
           value={enteredText}
@@ -54,8 +62,10 @@ const MessageOwnerForm = ({ to, patent }) => {
           onBlur={textBlurHandler}
         ></textarea>
         {textHasError && <p className={classes.error}>Text has error</p>}
-      </div>
-      <div className={classes.info}>
+      </Box>
+      <Box className={classes.info} sx={{
+        bgcolor: "background.paperAlt"
+      }}>
         <div className={classes.to}>
           <h4>To</h4>
           <p>{formatAddress(to)}</p>
@@ -66,17 +76,19 @@ const MessageOwnerForm = ({ to, patent }) => {
           <p><Link to={`/patents/${patent}`}>{patent}</Link></p>
         </div>
 
-        <div className={classes["fee-note"]}>
+        {/* <div className={classes["fee-note"]}>
           <h4>Fee</h4>
           <p className={classes.fee}>0.002ETH</p>
           <p className={classes.note}>Note</p>
-        </div>
+        </div> */}
 
-        <Button type={"submit"} className={classes.submit}>
+        <Button type={"submit"} className={classes.submit} sxObj={{
+          my: 2,
+        }}>
           Send Message
         </Button>
-      </div>
-    </form>
+      </Box>
+    </Box>
   );
 };
 

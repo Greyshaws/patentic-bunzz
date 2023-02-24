@@ -16,49 +16,58 @@ const Nav = () => {
     const DEFAULT_NAVITEMS = [
         {
             id: "nav-item1",
-            text: "Explore",
-            link: "/patents",
+            text: "Home",
+            link: "/",
+            requireConnect: false,
         },
         {
-            id: "nav-item2",
-            text: "Your Patents",
-            link: `/${currentAccount}/patents`,
-        },
+          id: "nav-item2",
+          text: "Explore",
+          link: "/patents",
+          requireConnect: false,
+      },
+      
         {
             id: "nav-item3",
+            text: "Your Patents",
+            link: `/${currentAccount}/patents`,
+            requireConnect: true,
+        },
+        {
+            id: "nav-item4",
             text: `${formatAddress(currentAccount)}`,
             link: `/${currentAccount}`,
-        }
+            requireConnect: true,
+        },
+        {
+          id: "nav-item6",
+          text: "PAT Token",
+          link: "/pat-token",
+          requireConnect: false,
+      },
+      {
+          id: "nav-item6",
+          text: "About",
+          link: "/about",
+          requireConnect: false,
+      },
     ]
 
   return (
     <nav className={classes["nav"]}>
         <ul>
-            {DEFAULT_NAVITEMS.map(item => (
-                <NavItem
-                    key={item.id}
+            {DEFAULT_NAVITEMS.map((item, index) => {
+                return (
+                    <Box key={index}>
+                        {(item.requireConnect && !connected) ? <></> : <NavItem
                     text={item.text}
                     link={item.link}                
-                />
-            ))}
+                />}
+                    </Box>
+                )
+            })}
         </ul>
-        <Box>
-            {!connected && <Box sx={{
-                width: "15px",
-                height: "15px",
-                borderRadius: "50%",
-                border: "2px solid black",
-                bgcolor: "error.main"
-            }}></Box>}
-            {connected && <Box sx={{
-                width: "15px",
-                height: "15px",
-                borderRadius: "50%",
-                border: "2px solid black",
-                bgcolor: "info.main"
-            }}>
-              </Box>}
-        </Box>
+        
     </nav>
   )
 }

@@ -4,7 +4,6 @@ import Loading from '../UI/Loading'
 import Button from '../UI/Button'
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import { Link } from "react-router-dom";
 import PaddedContainer from '../Layout/PaddedContainer'
 
 
@@ -48,7 +47,7 @@ const Hero = () => {
         </Typography>
         <Typography variant="h3" sx={{
             textAlign: "center",
-            fontWeight: "400",
+            fontWeight: 300,
             fontSize: {sx: "1.25rem", md: "1.5rem"},
             mb: "1rem",
             maxWidth: "90%",

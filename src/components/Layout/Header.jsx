@@ -1,6 +1,6 @@
 import React from 'react'
-// import { useContext } from 'react'
-// import ContractContext from '../../context/contract-context'
+import { useContext } from 'react'
+import ContractContext from '../../context/contract-context'
 import Logo from '../UI/Logo'
 import { Link } from 'react-router-dom'
 // import { formatAddress } from '../../utils/contractUtils'
@@ -10,9 +10,9 @@ import Box from "@mui/material/Box"
 import NavDrawer from './NavDrawer'
 
 const Header = () => {
-  // const contractCtx = useContext(ContractContext)
+  const contractCtx = useContext(ContractContext)
 
-  // const {connected, currentAccount} = contractCtx;
+  const {connected} = contractCtx;
 
   return (
     <header className={classes.header}>
@@ -36,12 +36,24 @@ const Header = () => {
 }}>
   <Nav />
 </Box>
-
-
-
-        <Nav />
       
-        
+<Box>
+            {!connected && <Box sx={{
+                width: "15px",
+                height: "15px",
+                borderRadius: "50%",
+                border: "2px solid black",
+                bgcolor: "error.main"
+            }}></Box>}
+            {connected && <Box sx={{
+                width: "15px",
+                height: "15px",
+                borderRadius: "50%",
+                border: "2px solid black",
+                bgcolor: "info.main"
+            }}>
+              </Box>}
+        </Box>
     </header>
   )
 }

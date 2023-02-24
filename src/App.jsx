@@ -18,6 +18,7 @@ import PatentView from "./pages/PatentView";
 import CreatePatent from "./pages/CreatePatent";
 import Account from "./pages/Account";
 import MessageOwner from "./pages/MessageOwner";
+import PATToken from "./pages/PATToken";
 
 // const About = React.lazy(() => import('./pages/About'));
 // const SendMeHu = React.lazy(() => import('./pages/SendMeHu'));
@@ -36,6 +37,7 @@ export default function App() {
             {/* <Route path="new-user" element={<h1>New user</h1>} /> */}
           </Route>
           <Route path="/about" element={<About />} />
+          <Route path="/pat-token" element={<PATToken />} />
           <Route path="/explore" element={<Navigate replace to="/patents" />} />
           <Route path="/patents" element={<PatentsPage />} />
           <Route path=":address/patents" element={<PatentsPage forAccount={true} />} />

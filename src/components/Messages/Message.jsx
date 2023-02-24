@@ -1,5 +1,4 @@
-import React from 'react'
-import { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import ContractContext from '../../context/contract-context'
 import { formatAddress, truncateText, getTimestampDate, getTimestampTime } from '../../utils/contractUtils'
 import Box from "@mui/material/Box"
@@ -8,12 +7,21 @@ import Typography from "@mui/material/Typography"
 
 const Message = ({to, from, patent, timestamp, text}) => {
     const contractCtx = useContext(ContractContext)
+    const [openMessage, setOpenMessage] = useState(false)
 
     const { currentAccount } = contractCtx
     
     let isSent = (from === currentAccount) ? true : false
 
     console.log(timestamp)
+
+    const handleClick = () => {
+      setOpenMessage(true)
+    }
+
+    // const handleClose = () => {
+    //   setOpenMessage(false)
+    // }
 
   return (
     <Paper elevation={0} variant="outlined"  component="li" sx={{
@@ -41,7 +49,7 @@ const Message = ({to, from, patent, timestamp, text}) => {
 
 
 
-      }} >
+      }} onClick={handleClick} >
         <Box sx={{
           display: "flex",
           
@@ -73,9 +81,9 @@ const Message = ({to, from, patent, timestamp, text}) => {
                 <Typography variant="body1" sx={{
                   fontWeight: 700,
                 }} >{isSent ? `${formatAddress(to)}` : `${formatAddress(from)}`}</Typography>
-                <Typography variant="caption" sx={{
+                {!openMessage ? <Typography variant="caption" >{truncateText(text, 25)}...</Typography> : <Typography variant="caption" sx={{
 
-                }}>{truncateText(text, 25)}...</Typography>
+                }}>{text}</Typography>}
                 
             </Box>
         </Box>

@@ -6,12 +6,10 @@ import { formatAddress } from '../../utils/contractUtils'
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import Button from "../UI/Button"
 import Divider from '@mui/material/Divider';
-import Paper from '@mui/material/Paper';
 // import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
-import NotConnected from '../Errors/NotConnected';
 
 export default function NavDrawer({anchor="left" }) {
 
@@ -26,7 +24,7 @@ export default function NavDrawer({anchor="left" }) {
     right: false,
   });
 
-  const { currentAccount, connected } = contractCtx
+  const { currentAccount, connected, connectWallet } = contractCtx
 
   const DEFAULT_NAVITEMS = [
       {
@@ -57,13 +55,13 @@ export default function NavDrawer({anchor="left" }) {
       {
         id: "nav-item6",
         text: "PAT Token",
-        link: "/",
+        link: "/pat-token",
         requireConnect: false,
     },
     {
         id: "nav-item6",
         text: "About",
-        link: "/",
+        link: "/about",
         requireConnect: false,
     },
   ]
@@ -112,12 +110,12 @@ export default function NavDrawer({anchor="left" }) {
             listStyle: "none",
             padding: "0",
           }}>
-            {DEFAULT_NAVITEMS.map(item => {
+            {DEFAULT_NAVITEMS.map((item, index) => {
                 
 
                 return (
-                <>
-                {(item.requireConnect && !connected) ? <></> : <Link to={item.link} key={item.text}>
+                <Box key={index}>
+                {(item.requireConnect && !connected) ? <></> : <Link to={item.link} >
                     <Box component="li" sx={{
                        py: 1,
                        px: 2,
@@ -130,13 +128,20 @@ export default function NavDrawer({anchor="left" }) {
                         {item.text}
                     </Box>
                 </Link>}
-                </>
+                </Box>
                     
                )
             })}
         </Box>
       
         </Box>
+
+        {!connected && <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}>
+            <Button onClick={connectWallet}>Connect Wallet</Button>
+          </Box> }
         
     </Box>
   );
@@ -172,7 +177,7 @@ export default function NavDrawer({anchor="left" }) {
             
           </Drawer>
 
-          {!connected && <NotConnected />}
+          
           
         </React.Fragment>
       
