@@ -19,7 +19,7 @@ const Home = () => {
   const homeGuys = [
     {
       title: "Store and View Patents on the Blockchain",
-      image: "assets/greyshaws.png",
+      image: "assets/p1.png",
       text: "This is a text",
       action: <Button sxObj={{
         m: 1,
@@ -27,7 +27,7 @@ const Home = () => {
     },
     {
       title: "Explore Others Patents and Message Owners",
-      image: "assets/greyshaws",
+      image: "assets/p2.png",
       text: "This is a text",
       action: <Button sxObj={{
         m: 1,
@@ -36,7 +36,7 @@ const Home = () => {
     },
     {
       title: "Recieve PAT Token",
-      image: "assets/greyshaws",
+      image: "assets/p2.png",
       text: "This is a text",
       action: <Button sxObj={{
         m: 1,
@@ -86,7 +86,7 @@ const Home = () => {
                 }}>
                   <Box sx={{
                     position: "relative",
-                    width: "50%",
+                    width: {xs: "50%", md: "100%"},
 
                     "& img": {
                       objectFit: "contain",
