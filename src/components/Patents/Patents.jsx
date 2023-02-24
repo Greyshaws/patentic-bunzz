@@ -21,8 +21,8 @@ const Patents = ({ forAccount }) => {
   let patents = [...patentsCtx.patents];
 
   useEffect(() => {
-    const getAllPatentsHandler = () => {
-      getAllPatents();
+    const getAllPatentsHandler = async () => {
+      await getAllPatents();
       setLoadingPatents(false);
     };
     if (connected) {
@@ -44,7 +44,9 @@ const Patents = ({ forAccount }) => {
       {!connected ? (
         <NotConnected />
       ) : (
-        <div className={classes["patents-wrapper"]}>
+        <Box sx={{
+          py: 2
+        }}className={classes["patents-wrapper"]}>
           <div className={classes["info-wrapper"]}>
             <Typography
               varaint="body1"
@@ -87,7 +89,7 @@ const Patents = ({ forAccount }) => {
               })}
             </ul>
           )}
-        </div>
+        </Box>
       )}
     </>
   );

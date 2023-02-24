@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react'
 import ContractContext from '../../context/contract-context'
 import Loading from '../UI/Loading'
+import Button from '../UI/Button'
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
 import { Link } from "react-router-dom";
 import PaddedContainer from '../Layout/PaddedContainer'
 
@@ -31,7 +31,7 @@ const Hero = () => {
          <Box sx={{
         bgcolor: "background.paper",
         width: "100%",
-        height: { md: "calc(100vh - 4rem)"},
+        height: { xs: "calc(100vh - 4rem)", md: "calc(100vh - 4rem)"},
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -60,14 +60,12 @@ const Hero = () => {
         
 
         <Box>
-        {!connected && <Button variant="contained" loading={waitingConnection} onClick={connectWalletHandler} sx={{
+        {!connected && <Button loading={waitingConnection} onClick={connectWalletHandler} sxObj={{
             m: 1,
         }} >Connect Wallet</Button>}
-        {connected && <Link to={`/${currentAccount}/create-patent`}>
-            <Button variant="contained"  sx={{
-                m: 1,
-            }}>Create Patent</Button>
-        </Link>}
+        {connected && <Button sxObj={{
+            m: 1,
+        }} type="link" link={`/${currentAccount}/create-patent`}>Create Patent</Button>}
         </Box>
 
         {false && <Loading />}

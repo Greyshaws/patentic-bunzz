@@ -20,7 +20,7 @@ const Messages = () => {
 
     useEffect(() => {
         const getMessagesOnAddressHandler = async () => {
-            getMessagesOnAddress()
+            await getMessagesOnAddress()
             setLoadingMessages(false)
 
         }

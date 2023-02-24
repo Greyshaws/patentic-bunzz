@@ -106,6 +106,7 @@ export const MessagesContextProvider = ({ children }) => {
       console.log("patentsCleaned: ", messagesCleaned) 
       setMessages(messagesCleaned)
 
+      return messagesCleaned
       
       } else {
         console.log("Ethereum object doesn't exist!");

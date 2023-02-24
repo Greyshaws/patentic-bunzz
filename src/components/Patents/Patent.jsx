@@ -36,6 +36,10 @@ const Patent = ({patentOwner, timestamp, patentName, patentText, patentType}) =>
     },
     "&:nth-of-type(even)": {
         margin: {xs: "0 auto 1rem auto", md: "0.5rem 0 0.5rem 0.5rem"},
+    },
+
+    "&:hover": {
+      bgcolor: "primary.fade2"
     }
       }} onClick={patentViewHandler}>
         <Typography variant="h4" sx={{

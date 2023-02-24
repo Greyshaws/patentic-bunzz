@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 // import { formatAddress } from '../../utils/contractUtils'
 import classes from "./Header.module.css"
 import Nav from './Nav/Nav'
+import Box from "@mui/material/Box"
+import NavDrawer from './NavDrawer'
 
 const Header = () => {
   // const contractCtx = useContext(ContractContext)
@@ -17,6 +19,12 @@ const Header = () => {
       <Link to={"/"}>
       <Logo />
       </Link>
+
+        <Box sx={{
+          display: {xs: "block", md: "none"}
+        }}>
+          <NavDrawer />
+        </Box>
         
         <Nav />
       

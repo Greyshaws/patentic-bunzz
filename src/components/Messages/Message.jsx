@@ -25,19 +25,26 @@ const Message = ({to, from, patent, timestamp, text}) => {
       border: "2px solid",
       borderColor: "grey.gray4",
       mb: 1,
+      transition: ".3s",
+      cursor: "pointer",
   
       "&:hover": {
         borderColor: "primary.dark",
         bgcolor: "primary.fade2",
       },
-
-      "&:hover .icon-in-message-list": {
+      "& .icon-in-message-list": {
         bgcolor: "primary.fade2",
-        color: "primary.dark",
-      }
+      },
+      "&:hover .icon-in-message-list": {
+        bgcolor: "background.paper",
+      },
+
+
+
       }} >
         <Box sx={{
           display: "flex",
+          
           
         }}>
             <Box sx={{
@@ -46,7 +53,7 @@ const Message = ({to, from, patent, timestamp, text}) => {
                 minWidth: {xs: "30px", md: "30px"},
                 minHeight: {xs: "30px", md: "30px"},
                 borderRadius: "50%",
-                bgcolor: "background.paper",
+                transition: ".3s",
                 fontWeight: 500,
                 display: "flex",
                 alignItems: "center",
@@ -54,14 +61,15 @@ const Message = ({to, from, patent, timestamp, text}) => {
                 textAlign: "center",
                 fontSize: "12px",
                 mr: 1,
+                color: "primary.dark",
         
-              }}>
+              }} className={"icon-in-message-list"}>
                 
                 {isSent ? `TO`: `FM`}
               </Box>
             <Box sx={{
-              border: 1,
-            }}  className={"icon-in-message-list"}>
+              // border: 1,
+            }}  >
                 <Typography variant="body1" sx={{
                   fontWeight: 700,
                 }} >{isSent ? `${formatAddress(to)}` : `${formatAddress(from)}`}</Typography>
