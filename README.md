@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Patentic - A Blockchain-Based Platform for Patent Registration and Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Patentic is a decentralized platform for patent registration and management on the blockchain. It enables inventors and creators to protect their intellectual property and monetize their patents in a secure, transparent, and efficient manner. The platform leverages the power of blockchain technology to provide a decentralized, immutable, and auditable database of patents, making it easier for inventors to prove ownership, enforce their patents, and license their inventions.
+Patentic is built on the Polygon network, enabling fast and affordable transactions for users. With Patentic, you can easily create and manage your patents without the need for third-party intermediaries or expensive bureaucratic processes.
 
-## Available Scripts
+## HOW IT WORKS
+* Connect your Polygon wallet on the landing page
+* Click on the "Create Patent" button to begin the patent creation process
+* Fill in the patent details, including the patent name, content, and category
+* Click "Create" to finalize the patent creation process. You will be prompted to exchange 0.02 MATIC for 0.02 PAT tokens. Once you sign the transaction, the exchange will be complete.
 
-In the project directory, you can run:
+## PRESENTATION
+* Whitepaper: [https://drive.google.com/file/d/19P2KPG91sNOCTNA-hS9fgTLp9Ts8bCUh/view?usp=sharing](https://)
+* Live link:
 
-### `npm start`
+## TECH STACK
+* **Frontend**: Material UI, ReactJS, EthersJS
+* **Smart contract**: Solidity, Remix, Bunzz
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## FEATURES
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### VIEWING PATENTS
+After creating a patent, users can view their patents on the "Accounts" page. Here, they can see a list of all the patents they have created, along with their details such as the patent name, content, time, and owner.
 
-### `npm test`
+### EXPLORING PATENTS
+Users can also explore patents created by other users on the "Explore/Patents" page. Here, they can browse through patents created by other users on the platform. Clicking on a specific patent will reveal its details, such as the patent name, content, time, and owner.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### MESSAGING PATENT OWNERS
+In addition to exploring patents, users can also communicate with patent owners over the blockchain. By clicking on the designated button on a specific patent, users can send messages to the patent owner.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## APPLICATION BENEFITS
+* Intellectual property ownership cannot be disputed.
+* Users can easily access their intellectual property records and view ownership information.
+* No need for long or expensive processes to prove intellectual property.
+* Anyone with an internet connection can access the platform.
