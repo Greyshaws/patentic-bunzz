@@ -13,20 +13,20 @@ let theme = createTheme({
         white: "#ffffff",
     },
     primary: {
-      dark: "#43c000",
-      main: "#58cc02",
-      light: "#89e219",
+      dark: "#6c1b92",
+      main: "#8f25a2",
+      light: "#ac47b5",
+      fade1: "#e1bee4",
+      fade2: "#f3e5f4",
       contrastText: "#ffffff"
     },
     secondary: {
-      dark: "#f49000",
-      main: "#ffc200",
-      light: "#ffde00",
-      contrastText: "#4b4b4b",
-      color1: "#1cb0f6",
-      color2: "#ff4b4b",
-      color3: "#ce82ff",
-      color4: "#2b70c9",
+      dark: "#ff77ae",
+      main: "#ff9ec6",
+      light: "#FFC4DD",
+      fade1: "#ffe8f1",
+      fade2: "#ffe9e8",
+      contrastText: "#ffffff",
     },
     error: {
       main: "#ff4b4b",
@@ -42,6 +42,7 @@ let theme = createTheme({
     },
     background: {
       paper: "#ffffff",
+      paperAlt: "#120229",
       default: "#ffffff",
     },
     text: {
@@ -54,30 +55,15 @@ let theme = createTheme({
 
 theme = createTheme(theme, {
     palette: {
-        color1: {
-            dark: "#1cb0f6",
-            main: "#1cb0f6",
-            light: "#1cb0f6",
-            fade: "#1cb0f6",
+        secondary2: {
+            dark: "#8bcf00",
+            main: "#9ef900",
+            light: "#baff66",
+            fade1: "#e3ffc1",
+            fade2: "#f3ffe6",
+            contrastText: "#ffffff",
         },
-        color2: {
-            dark: "#ff4b4b",
-            main: "#ff4b4b",
-            light: "#ff4b4b",
-            fade: "#ff4b4b",
-        },
-        color3: {
-            dark: "#ce82ff",
-            main: "#ce82ff",
-            light: "#ce82ff",
-            fade: "#ce82ff",
-        },
-        color4: {
-            dark: "#2b70c9",
-            main: "#2b70c9",
-            light: "#2b70c9",
-            fade: "#2b70c9",
-        },
+       
         grey: {
             gray1: "#4b4b4b",
             gray2: "#777777",
@@ -96,7 +82,6 @@ theme = createTheme(theme, {
           textAlign: "center",
           wordSpacing: "10px",
           fontSize: "3.5rem",
-          textTransform: "uppercase",
           [theme.breakpoints.down('md')]: {
             fontSize: '2.5rem',
             fontWeight: 700,
