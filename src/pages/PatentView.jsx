@@ -9,6 +9,9 @@ import Header from "../components/Layout/Header";
 import { useEffect } from "react";
 import { useState } from "react";
 import { formatAddress } from "../utils/contractUtils";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 const PatentView = () => {
   const params = useParams();
@@ -83,13 +86,43 @@ function createMarkup() {
       <section className={classes["patent-view"]}>
 
         <div className={classes.main}>
-          <div className={classes["back"]} onClick={backHandler}>
+          <Box sx={{
+            mb: 4
+          }} className={classes["back"]} onClick={backHandler}>
             back
-          </div>
-          <h1 className={classes["name"]}>{patentName}</h1>
+          </Box>
+          <Box >
+          <Typography variant="body1" sx={{
+            fontWeight: 700,
+          }}>Patent Name</Typography>
+          <Typography variant="h2" sx={{
+            fontSize: "2rem",
+            mb: 2
+          }} className={classes["name"]}>{patentName}</Typography>
+
+          <Typography variant="body1" sx={{
+            fontWeight: 700,
+          }}>Content</Typography>
+          <Box sx={{
+            maxHeight: {xs: "calc(100vh - 2rem - 4rem - 6rem)"},
+            overflowY: "auto",
+          }}>
           <p className={classes["text"]} dangerouslySetInnerHTML={createMarkup()} ></p>
+          </Box>
+          </Box>
+          
+          
         </div>
-        <div className={classes.side}>
+        <Paper elevation={4} sx={{
+          p: 2,
+          bgcolor: "background.paperAlt",
+          borderRadius: "8px",
+          display: {xs: "block", md: "inline-block"},
+        width: {xs: "auto", md: "calc(35% - 1rem)"},
+        height: "auto",
+        marginLeft: {xs: "auto", md: "1rem"},
+        minHeight: {xs: "auto", md: "calc(100vh - 4rem - 3.5rem)"},
+        }} className={classes.side}>
           <div className={classes["type"]}>
           <h4>Type:</h4>
            <p>{patentType}</p></div>
@@ -116,7 +149,7 @@ function createMarkup() {
             <Button className={classes["share-btn"]} onClick={shareClickHandler}>Share</Button>
 
           </div>
-        </div>
+        </Paper>
       </section>
     </>
   );

@@ -4,7 +4,7 @@ import abi from "../utils/PatenticAlt.json";
 const ethers = require("ethers")
 
 
-const contractAddress = "0x888CB9469f71b8F4f275b63ad4BE9b85C2Bd17bC";
+const contractAddress = "0x07620E455B959C9d2181363857d87C39673abCB3";
 const contractABI = abi.abi
 
 const MessagesContext = React.createContext({

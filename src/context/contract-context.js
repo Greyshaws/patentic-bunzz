@@ -13,13 +13,17 @@ const ContractContext = React.createContext({
 export const ContractContextProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [accounts, setAccounts] = useState("")
-  const [connected, setConnected] = useState(false);
-//   const [balance, setBalance] = useState("");
 
-  const checkIfWalletIsConnected = async () => {
-    try {
-        const { ethereum } = window;
+
   
+   
+   /**
+  * Implement your connectWallet method here
+  */
+    const connectWallet = async () => {
+        try {
+          const { ethereum } = window;
+    
         if (!ethereum) {
           console.log("Make sure you have metamask!");
           return;
@@ -30,58 +34,24 @@ export const ContractContextProvider = ({ children }) => {
         /*
         * Check if we're authorized to access the user's wallet
         */
-        const accounts = await ethereum.request({ method: "eth_accounts" });
-        
+        const accounts = await ethereum.request({ method: "eth_requestAccounts" });
         if (accounts.length !== 0) {
             setAccounts(accounts)
           const account = accounts[0];
           console.log("Found an authorized account:", account);
           setCurrentAccount(account)
         } else {
-          console.log("No authorized account found")
-        }
-    } catch (error) {
-        console.log(error);
-      }
-    }
-  
-    useEffect(() => {
-      checkIfWalletIsConnected();
-    }, [])
-  
-    // install --save https-browserify browserify-zlib stream-http crypto-browserify url stream-browserify
- 
-   /**
-  * Implement your connectWallet method here
-  */
-    const connectWallet = async () => {
-        try {
-          const { ethereum } = window;
-    
-          if (!ethereum) {
-            alert("Get MetaMask!");
-            return;
+            console.log("No authorized account found")
           }
-    
-          const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-    
-          console.log("Connected", accounts[0]);
-          setCurrentAccount(accounts[0]);
+  
+
         } catch (error) {
           console.log(error)
         }
       }
+
+      let connected = currentAccount ? true : false
     
-
-      // check if contract is still connected once it changes state
-  useEffect(() => {
-    if (currentAccount) {
-      setConnected(true)
-    }
-  }, [currentAccount])
-
-
-  // npx browserslist@latest --update-db
   return (
     <ContractContext.Provider
       value={{

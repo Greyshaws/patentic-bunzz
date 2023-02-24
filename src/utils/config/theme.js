@@ -3,7 +3,8 @@ import { createTheme } from "@mui/material/styles";
 
 // const font1 = "'Nunito', sans-serif";
 const font1 = "'Carter One', cursive";
-const font2 = "'Nunito', sans-serif";
+const font2 = "Carter One', cursive";
+const font3 = "Courier New";
 // Create a theme instance.
 let theme = createTheme({
   palette: {
@@ -104,8 +105,6 @@ theme = createTheme(theme, {
         },
         h2: {
           fontFamily: font1,
-          margin: "1rem 0",
-          textAlign: "center",
           fontSize: "3rem", 
           [theme.breakpoints.down('md')]: {
             fontSize: '1.75rem',

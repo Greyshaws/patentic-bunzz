@@ -28,19 +28,6 @@
     margin-bottom: 0.5rem;
 }
 
-.info-wrapper p {
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: var(--font-3);
-    color: var(--dark-700);
-    margin-top: 0.5rem;
-}
-
-@media screen and (min-width-760px) {
-    .info-wrapper p {
-        font-size: 2rem;
-    }
-}
 
 
 @media screen and (min-width: 900px) {

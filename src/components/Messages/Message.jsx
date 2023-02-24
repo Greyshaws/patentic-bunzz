@@ -1,8 +1,10 @@
 import React from 'react'
 import { useContext } from 'react'
 import ContractContext from '../../context/contract-context'
-import { formatAddress } from '../../utils/contractUtils'
-import classes from "./Message.module.css"
+import { formatAddress, truncateText, getTimestampDate, getTimestampTime } from '../../utils/contractUtils'
+import Box from "@mui/material/Box"
+import Paper from "@mui/material/Paper"
+import Typography from "@mui/material/Typography"
 
 const Message = ({to, from, patent, timestamp, text}) => {
     const contractCtx = useContext(ContractContext)
@@ -11,23 +13,77 @@ const Message = ({to, from, patent, timestamp, text}) => {
     
     let isSent = (from === currentAccount) ? true : false
 
-    console.log("to: ", to)
-
-    console.log("from: ", from)
+    console.log(timestamp)
 
   return (
-    <li className={classes.message}>
-            <div className={classes["left"]}>
-                <p  className={classes["text"]}>{text}</p>
-                <p className={classes["to-from"]}>{isSent ? `To ${formatAddress(to)}` : `From ${formatAddress(from)}`}</p>
-            </div>
+    <Paper elevation={0} variant="outlined"  component="li" sx={{
+     
+      display: "flex",
+      justifyContent: "space-between",
+      p: 1,
+      borderRadius: 2,
+      border: "2px solid",
+      borderColor: "grey.gray4",
+      mb: 1,
+  
+      "&:hover": {
+        borderColor: "primary.dark",
+        bgcolor: "primary.fade2",
+      },
 
-        <div className={classes["right"]}>
-            <p  className={classes["time"]}>{timestamp}</p>
-            <p  className={classes["patent"]}>{patent}</p>
-        </div>
+      "&:hover .icon-in-message-list": {
+        bgcolor: "primary.fade2",
+        color: "primary.dark",
+      }
+      }} >
+        <Box sx={{
+          display: "flex",
+          
+        }}>
+            <Box sx={{
+                width: {xs: "30px", md: "30px"},
+                height: {xs: "30px", md: "30px"},
+                minWidth: {xs: "30px", md: "30px"},
+                minHeight: {xs: "30px", md: "30px"},
+                borderRadius: "50%",
+                bgcolor: "background.paper",
+                fontWeight: 500,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                fontSize: "12px",
+                mr: 1,
+        
+              }}>
+                
+                {isSent ? `TO`: `FM`}
+              </Box>
+            <Box sx={{
+              border: 1,
+            }}  className={"icon-in-message-list"}>
+                <Typography variant="body1" sx={{
+                  fontWeight: 700,
+                }} >{isSent ? `${formatAddress(to)}` : `${formatAddress(from)}`}</Typography>
+                <Typography variant="caption" sx={{
 
-    </li>
+                }}>{truncateText(text, 25)}...</Typography>
+                
+            </Box>
+        </Box>
+          
+
+        <Box sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }} >
+            <Typography variant='caption'>{getTimestampDate(timestamp)}</Typography>
+            <Typography variant='caption'>{getTimestampTime(timestamp)}</Typography>
+            {/* <p  className={classes["patent"]}>{patent}</p> */}
+        </Box>
+
+    </Paper>
   )
 }
 

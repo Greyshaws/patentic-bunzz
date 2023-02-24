@@ -46,7 +46,7 @@ contract Patentic is IPatentic, ReentrancyGuard, Ownable {
     function createPatent(
         string memory _patentName,
         string memory _patentText,
-        string memory _patentType,
+        string memory _patentType
     ) external payable override {
         buyPatent(msg.sender);
 

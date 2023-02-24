@@ -21,15 +21,18 @@ export default function PatentCategory({category, onSelectCategory}) {
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 120, mb: 2 }} >
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">category</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={category}
-          label="category"
           onChange={handleSelectCategory }
+          sx={{
+            outline: "2px solid black",
+            borderRadius: "8px",
+          }}
         >
 
             {categories.map(cat => {

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import ContractContext from "./contract-context";
 import abi from "../utils/PatenticAlt.json";
 const ethers = require("ethers")
 
 
-const contractAddress = "0x07620E455B959C9d2181363857d87C39673abCB3";
+const contractAddress = "0x888CB9469f71b8F4f275b63ad4BE9b85C2Bd17bC";
 const contractABI = abi.abi
 
 
@@ -22,8 +23,11 @@ const toWei = (ether) => ethers.utils.parseEther(ether)
 
 
 export const PatentsContextProvider = ({ children }) => {
+    const contractCtx = useContext(ContractContext);
   const [patents, setPatents] = useState([]);
   const [patentsOnAddress, setPatentsOnAddress] = useState([]);
+  
+    const { connected } = contractCtx
 
 
  
@@ -54,8 +58,6 @@ export const PatentsContextProvider = ({ children }) => {
 
 
     const addPatent = async (name, text, type) => {
-      console.log(name, text, type)
-      console.log(typeof name, typeof text, typeof type)
       const { ethereum } = window;
       try {
         
@@ -66,16 +68,16 @@ export const PatentsContextProvider = ({ children }) => {
           console.log("getting signer")
           const signer = provider.getSigner();
           console.log("getting contract")
-          const patenticContract = new ethers.Contract(contractAddress, contractABI, signer);
+          const patenticContract = new ethers.Contract(contractAddress, contractABI, provider);
           console.log("gotten contract: ", patenticContract)
 
            const wei = toWei(`${0.02}`);
           
-          const createPatentTxn = await patenticContract.connect(signer).createPatent(name, text, type, {value: wei, gasLimit: 1000000});
+          const createPatentTxn = await patenticContract.connect(signer).createPatent(name, text, type, {value: wei, gasLimit: 100000});
           console.log("Mining...", createPatentTxn.hash);
 
         await createPatentTxn.wait();
-        console.log("Mined -- ", createPatentTxn);
+        console.log("Mined -- ", createPatentTxn.hash);
 
 
           // console.log("getting count")
@@ -85,7 +87,7 @@ export const PatentsContextProvider = ({ children }) => {
           console.log("Ethereum object doesn't exist!");
         }
       } catch (error) {
-        console.log(error.message);
+        console.log(error);
       }
   }
 
@@ -214,11 +216,18 @@ const getPatentsOnAddress = async () => {
 
   console.log("patents: ", patents)
 
+    // useEffect(() => {
+    //     if (connected) {
+    //         setPatents(DEFAULT_Ps)
+    //     }
+    // }, [connected])
+
+  // npx browserslist@latest --update-db
   return (
     <PatentsContext.Provider
       value={{
         patents: patents,
-        patentsOnAddress: patentsOnAddress,
+        patentsOnAddress, patentsOnAddress,
         addPatent: addPatent,
         getNoOfPatents: getNoOfPatents,
         getAllPatents: getAllPatents,

@@ -5,6 +5,9 @@ import MessagesContext from '../../context/messages-context'
 import Loading from "../UI/Loading"
 import Message from './Message';
 import classes from "./Messages.module.css"
+import MessagesFilter from './MessagesFilter';
+import Box from "@mui/material/Box"
+import {sortMessagesByTimestamp } from "../../utils/contractUtils"
 
 const Messages = () => {
     const messagesCtx = useContext(MessagesContext);
@@ -12,12 +15,12 @@ const Messages = () => {
     const [loadingMessages, setLoadingMessages] = useState(false)
     const [filter, setFilter] = useState("")
 
-    const {messages } = messagesCtx
+    const {messages, getMessagesOnAddress } = messagesCtx
     const {connected, currentAccount} = contractCtx
 
     useEffect(() => {
         const getMessagesOnAddressHandler = async () => {
-            await messagesCtx.getMessagesOnAddress()
+            getMessagesOnAddress()
             setLoadingMessages(false)
 
         }
@@ -37,9 +40,13 @@ const Messages = () => {
 
     if ((messages.length === 0) && !loadingMessages) {
         return (
-            <div>
-                No Messages
-            </div>
+            <Box sx={{
+                py: 4,
+                fontWeight: 500,
+                textAlign: "center"
+            }}>
+                Got no messages!
+            </Box>
         )
     }
 
@@ -58,22 +65,22 @@ const Messages = () => {
         filteredMessages = filteredMessages.filter(message => message.to === currentAccount);
     }
 
+    let sortedMessages = sortMessagesByTimestamp(filteredMessages);
+
 
   return (
     <>
     <div className={classes.filter}>
-        <div onClick={() => changeFilterHandler("sent")}>sent</div>
-        <div onClick={() => changeFilterHandler("received")}>received</div>
-        <div onClick={() => changeFilterHandler("")}>none</div>
+        <MessagesFilter value={filter} onChangeFilter={changeFilterHandler} />
     </div>
     <ul className={classes["messages"]}>
-        {filteredMessages.map(message => {
-            console.log("message TIME: ", message.timestamp)
+        {sortedMessages.map((message, index )=> {
+            // console.log("message TIME: ", message.timestamp)
             return (
                 <Message
-                    key={message.patent}
+                    key={index}
                     text={message.text}
-                    timestamp={"message.timestamp"}
+                    timestamp={message.timestamp}
                     from={currentAccount}
                     to={message.to}
                     patent={message.patent}
