@@ -66,6 +66,19 @@ const Nav = () => {
                     </Box>
                 )
             })}
+
+       
+        <a href={"https://drive.google.com/file/d/1GcjrZTfnGIBB68si1QDxIl3gbTX79wmd/view?usp=drivesdk"}
+                    target="_blank"
+                    rel="noreferrer" style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}>
+                 <li>
+                 White Paper
+        </li>
+                
+              </a>
         </ul>
         
     </nav>

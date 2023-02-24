@@ -132,6 +132,27 @@ export default function NavDrawer({anchor="left" }) {
                     
                )
             })}
+
+<a href={"https://drive.google.com/file/d/1GcjrZTfnGIBB68si1QDxIl3gbTX79wmd/view?usp=drivesdk"}
+                    target="_blank"
+                    rel="noreferrer" style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}>
+                <Box component="li" sx={{
+                       py: 1,
+                       px: 2,
+                       transition: ".3s",
+                       borderRadius: "0 1rem 1rem 0",
+                       "&:hover": {
+                           bgcolor: "primary.fade2"
+                       }
+                    }}>
+                        Whitepaper
+                    </Box>
+              </a>
+
+
         </Box>
       
         </Box>

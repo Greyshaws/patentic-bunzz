@@ -19,16 +19,16 @@ const Home = () => {
   const homeGuys = [
     {
       title: "Store and View Patents on the Blockchain",
-      image: "assets/greyshaws.png",
-      text: "This is a text",
+      image: "assets/p1.png",
+      text: "Patentic allows users to easily create, store, and view patents on the platform. Users can upload their patent documents and store them securely on the blockchain, ensuring that they are tamper-proof and immutable. They can also view and manage their patents from their dashboard, making it easier to keep track of their intellectual property.",
       action: <Button sxObj={{
         m: 1,
     }} type="link" link={`/${currentAccount}/create-patent`}>Create Patent</Button>
     },
     {
       title: "Explore Others Patents and Message Owners",
-      image: "assets/greyshaws",
-      text: "This is a text",
+      image: "assets/p2.png",
+      text: "Patentic enables users to explore other patents on the platform, allowing them to discover new inventions and ideas. Users can also message the owners of these patents directly, which can facilitate collaboration and licensing opportunities. This feature can help inventors connect with potential partners and investors, and ultimately monetize their inventions.",
       action: <Button sxObj={{
         m: 1,
     }} type="link" link={`/patents`}>Explore</Button>
@@ -36,8 +36,8 @@ const Home = () => {
     },
     {
       title: "Recieve PAT Token",
-      image: "assets/greyshaws",
-      text: "This is a text",
+      image: "assets/p3.png",
+      text: "Patentic rewards users with PAT tokens when they create a patent on the platform. These tokens can be used to pay for future patent-related services on the platform, or they can be traded on cryptocurrency exchanges. This incentivizes users to create patents on the platform, while also providing a way to access other patent-related services in the future.",
       action: <Button sxObj={{
         m: 1,
     }} type="link" link={`/${currentAccount}/create-patent`}>Create Patent</Button>
@@ -86,7 +86,9 @@ const Home = () => {
                 }}>
                   <Box sx={{
                     position: "relative",
-                    width: "50%",
+                    width: {xs: "50%", md: "100%"},
+                    borderRadius: "8px",
+                    overflow: "hidden",
 
                     "& img": {
                       objectFit: "contain",
