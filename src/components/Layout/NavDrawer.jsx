@@ -1,5 +1,7 @@
 import React, {useState, useContext} from 'react';
-import ContractContext from '../../context/contract-contract'
+
+import { Link } from 'react-router-dom'
+import ContractContext from '../../context/contract-context'
 import { formatAddress } from '../../utils/contractUtils'
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -7,11 +9,9 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
-import Diversity1OutlinedIcon from '@mui/icons-material/Diversity1Outlined';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
-import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
+import NotConnected from '../Errors/NotConnected';
 
 export default function NavDrawer({anchor="left" }) {
 
@@ -31,19 +31,41 @@ export default function NavDrawer({anchor="left" }) {
   const DEFAULT_NAVITEMS = [
       {
           id: "nav-item1",
-          text: "Explore",
-          link: "/patents",
+          text: "Home",
+          link: "/",
+          requireConnect: false,
       },
       {
-          id: "nav-item2",
-          text: "Your Patents",
-          link: `/${currentAccount}/patents`,
-      },
+        id: "nav-item2",
+        text: "Explore",
+        link: "/patents",
+        requireConnect: false,
+    },
+    
       {
           id: "nav-item3",
+          text: "Your Patents",
+          link: `/${currentAccount}/patents`,
+          requireConnect: true,
+      },
+      {
+          id: "nav-item4",
           text: `${formatAddress(currentAccount)}`,
           link: `/${currentAccount}`,
-      }
+          requireConnect: true,
+      },
+      {
+        id: "nav-item6",
+        text: "PAT Token",
+        link: "/",
+        requireConnect: false,
+    },
+    {
+        id: "nav-item6",
+        text: "About",
+        link: "/",
+        requireConnect: false,
+    },
   ]
   
 
@@ -65,7 +87,7 @@ export default function NavDrawer({anchor="left" }) {
         <Box sx={{
           display: "flex",
           alignItems: "center",
-          py: 2,
+          py: 3,
           px: 2,
             
         }}>
@@ -80,19 +102,39 @@ export default function NavDrawer({anchor="left" }) {
         </Box>
         <Divider />
         <Box sx={{
-            pt: 3,
+            pt: 2,
             pr: 1,
+
         }}>
           
-          <ul>
-            {DEFAULT_NAVITEMS.map(item => (
-                <Box
-                    key={item.id}   
-                >      
-                {item}       
-                </Box>
-            ))}
-        </ul>
+          <Box component="ul" sx={{
+            paddingLeft: 0,
+            listStyle: "none",
+            padding: "0",
+          }}>
+            {DEFAULT_NAVITEMS.map(item => {
+                
+
+                return (
+                <>
+                {(item.requireConnect && !connected) ? <></> : <Link to={item.link} key={item.text}>
+                    <Box component="li" sx={{
+                       py: 1,
+                       px: 2,
+                       transition: ".3s",
+                       borderRadius: "0 1rem 1rem 0",
+                       "&:hover": {
+                           bgcolor: "primary.fade2"
+                       }
+                    }}>
+                        {item.text}
+                    </Box>
+                </Link>}
+                </>
+                    
+               )
+            })}
+        </Box>
       
         </Box>
         
@@ -110,10 +152,15 @@ export default function NavDrawer({anchor="left" }) {
               onClick={toggleDrawer(anchor, true)}
               sx={{
                 p: 1.5,
-                borderRadius: 1,
+                borderRadius: "8px",
+                mr: 2, 
+                "&:hover": {
+                    bgcolor: "primary.fade2"
+                }
               }}
             >
-              <MenuIcon />
+                |||
+              {/* <MenuIcon /> */}
             </IconButton>
           <Drawer
             anchor={anchor}
@@ -124,6 +171,8 @@ export default function NavDrawer({anchor="left" }) {
 
             
           </Drawer>
+
+          {!connected && <NotConnected />}
           
         </React.Fragment>
       

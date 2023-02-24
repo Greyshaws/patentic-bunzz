@@ -16,16 +16,29 @@ const Header = () => {
 
   return (
     <header className={classes.header}>
+    <Box sx={{
+      display: "flex",
+      alignItems: "center",
+    }}>
+      <Box sx={{
+      display: {xs: "block", md: "none"}
+    }}>
+      <NavDrawer />
+    </Box>
       <Link to={"/"}>
       <Logo />
       </Link>
+    </Box>
+    
 
-        <Box sx={{
-          display: {xs: "block", md: "none"}
-        }}>
-          <NavDrawer />
-        </Box>
-        
+<Box sx={{
+  display: {xs: "none", md: "block"}
+}}>
+  <Nav />
+</Box>
+
+
+
         <Nav />
       
         
