@@ -22,14 +22,14 @@
   
   .top {
     transform: translateZ(-20px);
-    background: var(--secondary-red-700);
+    background: #9ef900;
     /* border-radius: 10px 0 0 0; */
   }
   
   .front {
     transform: rotateX(90deg);
     transform-origin: bottom;
-    background: var(--primary-700);
+    background: #ff9ec6;
     /* border-radius: 0 0 0 10px; */
   }
   
@@ -37,12 +37,12 @@
     width: 20px;
     transform: translateZ(-20px) rotateY(90deg);
     transform-origin: right;
-    background: var(--secondary-blue-700);
+    background: #8f25a2;
     /* border-radius: 10px 0 0 0; */
   }
 
   .bottom {
-    background: var(--dark-700);
+    background: #9ef900;
   }
 
   .right {
