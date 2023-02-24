@@ -9,7 +9,7 @@ import {formatAddress} from "../utils/contractUtils"
 const PATToken = () => {
     const [copiedAddr, setCopiedAddr] = useState(false);
 
-    let address = "0x5a89D7585EE663c2CE410eEb7070C0749CEA7CA5"
+    let address = "0x279E04312587f55bFd7bCbe86a95fB6EA580B027"
     let chain = "Mumbai Testnet"
     let decimals = 18
 
