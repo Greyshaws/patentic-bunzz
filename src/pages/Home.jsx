@@ -62,7 +62,7 @@ const Home = () => {
                   minHeight: "calc(100vh - 5rem)"
                 }}>
                   <Typography variant="h2" sx={{
-                textAlign: "left",
+                textAlign: {xs: "left", md: "center"},
                 my: 2,
               }}>{item.title}</Typography>
 
@@ -74,9 +74,11 @@ const Home = () => {
                   <Box>
                   <Typography variant="body1" sx={{
                 // textAlign: (index % 2 === 0) ? "left" : "right",
+                fontSize: {xs: "1rem", md: "1.25rem"},
+                mb: 2
               }}>{item.text}</Typography>
               {connected ? item.action : <Button sx={{
-                my: 1
+                my: 2
               }} onClick={connectWallet}>Connect Wallet
                 </Button>}
                   </Box>
@@ -89,6 +91,9 @@ const Home = () => {
                     width: {xs: "50%", md: "100%"},
                     borderRadius: "8px",
                     overflow: "hidden",
+                    border: "2px solid",
+                    borderColor: "secondary2.fade2",
+                    bgcolor: "secondary2.fade2",
 
                     "& img": {
                       objectFit: "contain",
@@ -107,9 +112,12 @@ const Home = () => {
                   <Box>
                   <Typography variant="body1" sx={{
                 // textAlign: (index % 2 === 0) ? "left" : "right",
+                
+                fontSize: {xs: "1rem", md: "1.25rem"},
+                mb: 2
               }}>{item.text}</Typography>
               {connected ? item.action : <Button sx={{
-                my: 1
+                my: 2
               }} onClick={connectWallet}>Connect Wallet
                 </Button>}
                   </Box>
